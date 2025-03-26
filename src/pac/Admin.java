@@ -25,21 +25,20 @@ public class Admin extends Department {
 	// function adds emp. to dept.
 	@Override
 	public boolean join(Employee empObject) {
-		boolean isAdded = false;
+		boolean isAdded = true;
 		if (listOfEmployess.size() == 0) {
 			listOfEmployess.add(employeeObject);
 			empObject.departmentType = "Admin";
-			isAdded = true;
 			return isAdded;
 		}
 		for (int listIndex = 0; listIndex < listOfEmployess.size(); listIndex++) {
 			if ((listOfEmployess.get(listIndex).getEmpId()) == empObject.getEmpId()) {
 				isAdded = false;
-			} else {
-				listOfEmployess.add(employeeObject);
-				empObject.departmentType = "Admin";
-				isAdded = true;
 			}
+		}
+		if(isAdded){
+			listOfEmployess.add(employeeObject);
+			empObject.departmentType = "Admin";
 		}
 		return isAdded;
 	}
